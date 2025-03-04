@@ -31,29 +31,24 @@ body {
 }
 
 /* Navigation Bar */
-nav {
+#navbar {
     background: #34A866;
     padding: 15px;
     text-align: center;
 }
 
-nav ul {
-    list-style: none;
+#navbar nav {
     display: flex;
     justify-content: center;
-    padding: 0;
-    margin: 0;
+    gap: 20px;
 }
 
-nav li {
-    margin: 0 10px;
-}
-
-nav a {
+#navbar a {
     color: #fff;
     text-decoration: none;
     padding: 10px 15px;
     font-size: 18px;
+    font-weight: bold;
 }
 
 nav a:hover {
@@ -124,12 +119,17 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    nav a {
-        margin: 10px 0;
+    #navbar nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
     }
 
-    .container {
-        width: 90%;
+    #navbar a {
+        display: block;
+        width: 100%;
+        text-align: center;
         padding: 15px;
     }
 }
