@@ -112,12 +112,12 @@ h1, h2, h3 {
 }
 
 .cta-button:hover {
-    background-color: #003d80;
+    background-color: #1D5E39;
 }
 
 /* Footer styling */
 footer {
-    background: #1D5E39;
+    background: #33A765;
     color: #fff;
     text-align: center;
     padding: 10px 0;
