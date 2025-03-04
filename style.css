@@ -52,7 +52,7 @@ body {
 }
 
 nav a:hover {
-    background: #005b8e;
+    background: #1D5E39;
     border-radius: 5px;
 }
 
@@ -92,7 +92,7 @@ h1, h2, h3 {
     border-radius: 5px;
 }
 .button:hover {
-    background: #005b8e;
+    background: #1D5E39;
 }
 .cta-button {
     display: inline-block;
