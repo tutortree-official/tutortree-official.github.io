@@ -78,7 +78,7 @@ main {
 
 /* Headings */
 h1, h2, h3 {
-    color: #005b8e;
+    color: #33A765;
     margin-bottom: 10px;
 }
 
@@ -90,7 +90,7 @@ h1, h2, h3 {
 /* Buttons */
 .button {
     display: inline-block;
-    background: #0077b6;
+    background: #33A765;
     color: white;
     padding: 10px 15px;
     text-decoration: none;
@@ -101,7 +101,7 @@ h1, h2, h3 {
 }
 .cta-button {
     display: inline-block;
-    background-color: #0056b3;
+    background-color: #33A765;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
