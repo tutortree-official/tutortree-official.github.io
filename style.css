@@ -69,7 +69,7 @@ main {
 
 /**/
 .introduction {
-    background-image: url('./assets/IMG20250215165528.jpg');
+    background-image: url('../assets/IMG20250215165528.jpg');
     background-size: cover;
     background-position: center;
     min-height: 80vh;
