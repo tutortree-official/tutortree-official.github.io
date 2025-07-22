@@ -67,6 +67,27 @@ main {
     flex: 1;
 }
 
+/**/
+.introduction {
+    background-image: url('./assets/IMG20250215165528.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent dark overlay */
+    padding: 2rem;
+    border-radius: 8px;
+}
+
 /* Container */
 .container {
     max-width: 800px;
