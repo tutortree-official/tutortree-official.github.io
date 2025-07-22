@@ -67,8 +67,8 @@ main {
     flex: 1;
 }
 
-/**/
-.introduction {
+/*hero section*/
+.hero {
     background-image: url('../assets/IMG20250215165528.jpg');
     background-size: cover;
     background-position: center;
