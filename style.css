@@ -260,6 +260,7 @@ main {
 .yellow-section {
     grid-area: yellow-area;
     background-color: #f7ff6c; /* Example yellow */
+    color: white;
 }
 
 .green-section {

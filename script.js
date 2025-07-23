@@ -38,7 +38,7 @@ function loadFooter() {
     `;
 }
 
-// Function to insert the 'how it works' section
+// Function to insert the 'about' section
 function loadAbout() {
     document.getElementById("about-section").innerHTML = `
         <section class="about-grid-section">
@@ -116,7 +116,7 @@ function loadHow() {
     `;
 }
 
-// Function to insert the 'how it works' section
+// Function to insert the 'reviews' section
 function loadReviews() {
     document.getElementById("reviews").innerHTML = `
         <section class="google-reviews-section">
@@ -124,13 +124,13 @@ function loadReviews() {
                 <h2>What Our Students Say</h2>
                 <p class="section-description">Hear directly from the high school students and parents we've helped succeed.</p>
 
-                <div class="google-reviews-widget-container">
-                    <!-- Elfsight Google Reviews | Untitled Google Reviews -->
-                    <script src="https://static.elfsight.com/platform/platform.js" async>
-                    </script>
-                    <div class="elfsight-app-d57eb0c5-bee5-4ab6-a33b-10a8ec45b671" data-elfsight-app-lazy>
-                    </div>
-                </div>
+        <div class="google-reviews-widget-container">
+            <!-- Elfsight Google Reviews | Untitled Google Reviews -->
+            <script src="https://static.elfsight.com/platform/platform.js" async>
+            </script>
+            <div class="elfsight-app-d57eb0c5-bee5-4ab6-a33b-10a8ec45b671" data-elfsight-app-lazy>
+            </div>
+        </div>
 
                 <a href="https://g.co/kgs/gcJGd1n" target="_blank" class="cta-button reviews-button">Read All Reviews on Google</a>
             </div>
