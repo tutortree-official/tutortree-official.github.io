@@ -24,11 +24,12 @@ body {
     flex-direction: column;
 }
 
-.how-it-works {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 1.1rem;
-    color: #333;
+/* General Header Styles (ensure title is centered if it's part of the header) */
+header {
+    background: #f8f8f8; /* Light background for header to distinguish */
+    padding: 0px 0px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative; /* Ensure header itself is a positioning context */
 }
 
 .intro {
@@ -43,9 +44,20 @@ body {
     background: #2ecc71;
     padding: 15px;
     text-align: center;
+    position: relative; /* Needed for absolute positioning of nav-links */
+    display: flex; /* Make navbar a flex container */
+    justify-content: center; /* Center nav links by default */
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on desktop if many links */
 }
 #navbar nav {
     display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%; /* Take full width to center effectively */
+}
+#navbar nav.nav-links { /* Target the nav links specifically */
+    display: flex; /* Default: horizontal for desktop */
     justify-content: center;
     gap: 20px;
 }
@@ -55,6 +67,12 @@ body {
     padding: 10px 15px;
     font-size: 18px;
     font-weight: bold;
+    white-space: nowrap; /* Prevents links from wrapping */
+}
+
+/* Hide the menu toggle by default (desktop view) */
+.menu-toggle {
+    display: none;
 }
 
 nav a:hover {
@@ -90,17 +108,199 @@ main {
     flex-direction: column;
     gap: 1.5rem; /*to create space between children */
     /* X individual margins on h2, p, and cta-button if using gap */
+    max-width: 600px; /* Example: limit the width of the overlay */
+    width: 90%; /* Ensure it's responsive */
 }
 .hero-overlay h2 {
-    margin-bottom: 1rem; /* Adjust as needed */
+    /* margin-bottom: 1rem; Adjust as needed */
     font-size: 2.5rem; /* Example: make the heading larger */
     line-height: 1.2; /* Improve readability */
     color: #2ecc71; /* Example: give it a distinct color */
 }
 .hero-overlay p {
-    margin-bottom: 1.5rem; /* Adjust as needed */
+    /* margin-bottom: 1.5rem; Adjust as needed */
     font-size: 1.2rem; /* Example: make the paragraph slightly larger */
     line-height: 1.5; /* Improve readability */
+}
+
+.how-it-works-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.8fr 1fr 1fr; /* Or whatever you settled on for its heights */
+    grid-template-areas:
+        "blue-area yellow-area"
+        "green-area purple-area"
+        "green-area purple-area"; /* Explicitly defining spanning */
+    min-height: 80vh;
+    width: 100%;
+}
+
+/* Original grid item placements for how-it-works-grid-container */
+.how-it-works-grid-container .blue-section {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+/* ... and so on for yellow, green, purple within how-it-works-grid-container */
+.how-it-works-grid-container .yellow-section {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+.how-it-works-grid-container .green-section {
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
+}
+.how-it-works-grid-container .purple-section {
+    grid-column: 2 / 3;
+    grid-row: 2 / 4;
+}
+
+.about-grid-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Keep 2 columns, adjust if needed */
+    grid-template-rows: 0.6fr 1.4fr; /* NEW ROW SIZING - Example: first row taller, next two shorter */
+    min-height: 80vh;
+    width: 100%;
+
+    /* NEW LAYOUT USING GRID-TEMPLATE-AREAS */
+    grid-template-areas:
+        "purple-area green-area" /* Purple top-left, Green top-right */
+        "yellow-area blue-area"  /* Yellow middle-left, Blue middle-right */
+        "yellow-area blue-area"; /* Yellow and Blue span second and third rows */
+}
+
+/* Now, apply grid-area to the children.
+   These specific rules for 'another-grid-section' will override any general
+   '.blue-section', '.green-section' etc. rules that don't specify the parent. */
+.about-grid-section .purple-section {
+    grid-area: purple-area;
+    /* You can put specific background-color and text-color here for this section if they differ */
+    background-color: #491673; /* Purple */
+    color: white;
+}
+
+.about-grid-section .green-section {
+    grid-area: green-area;
+    background-color: #1eda6a; /* Green */
+    color: white;
+    text-align: center;
+}
+
+.about-grid-section .yellow-section {
+    grid-area: yellow-area;
+    background-color: #f7ff6c; /* Yellow */
+    color: #333; /* Dark text for yellow */
+}
+
+.about-grid-section .yellow-section  p{
+    margin: 0 5rem;
+}
+
+.about-grid-section .blue-section {
+    grid-area: blue-area;
+    background-color: #7baeff; /* Blue */
+    color: #333; /* Dark text for blue */
+}
+
+/* Styles for each grid area */
+.grid-area {
+    display: flex; /* Use flexbox within each area to center content */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    padding: 2rem; /* Add some padding inside each section */
+    text-align: center; /* Center text within each section */
+    overflow: hidden;
+}
+
+/* Ensure specific text/logo styling is general or targeted with class */
+/* For example, if green-section text needs to be white, and blue/yellow text dark: */
+.about-grid-section .green-section h3,
+.about-grid-section .green-section p {
+    color: white;
+}
+.about-grid-section .blue-section h2 {
+    color: #333; /* Dark text for blue */
+}
+.about-grid-section .blue-section p {
+    text-align: justify; /* Justify the text */
+    text-indent: 1.5em; /* Indent the first line of the paragraph */
+    /* Adjust font-size, line-height, and margin-bottom as needed */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1em; /* Space between paragraphs */
+}
+.about-grid-section .yellow-section .cta-button { /* Target button specifically if needed */
+    /* ... button styles ... */
+}.about-grid-section .yellow-section p {
+    text-align: justify; /* Justify the text */
+    text-indent: 1.5em; /* Indent the first line of the paragraph */
+    /* Adjust font-size, line-height, and margin-bottom as needed */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1em; /* Space between paragraphs */
+}
+.about-grid-section .purple-section .logo-on-purple {
+    /* ... logo styles ... */
+}
+
+.blue-section {
+    grid-area: blue-area;
+    background-color: #7baeff; /* Example blue */
+}
+.blue-section h2 {
+    color: #fff;
+}
+
+.white-box {
+    background-color: rgba(255,255,255,0.3); /* White background for the blue section */
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: subtle shadow */
+}
+
+.yellow-section {
+    grid-area: yellow-area;
+    background-color: #f7ff6c; /* Example yellow */
+}
+
+.green-section {
+    grid-area: green-area;
+    background-color: #1eda6a; /* Example green */
+    color: white; /* Text color for this section */
+    /* Align text content within this section to the left, as per your image */
+    text-align: left;
+    align-items: flex-center; /* Align content to the start (left) */
+    padding: 4rem 3rem;
+}
+
+.green-section h2 {
+    color: white; /* Override general h2 color for this section */
+    font-size: 2.8rem; /* Increase "How It Works" heading size significantly */
+    margin-bottom: 2rem; /* Add more space below the heading */
+    line-height: 1.2; /* Improves readability for larger text */
+}
+
+.green-section p {
+    color: #3bb378; /* Ensure paragraph text is white */
+    font-size: 1.3rem;
+    line-height: 1.7; /* Improve readability */
+    margin-bottom: 1.2rem; /* Space between points */
+}
+.green-section p:last-of-type {
+    margin-bottom: 2rem; /* More space before the button */
+}
+
+
+.purple-section {
+    grid-area: purple-area;
+    background-color: #491673; /* Example purple */
+    color: white; /* Text color for this section */
+    padding: 3rem 2rem;
+}
+
+.logo-on-purple {
+    max-width: 350px; /* Adjust size of the logo */
+    height: auto;
+    margin-bottom: 1rem;
 }
 
 /* Container */
@@ -116,12 +316,14 @@ main {
 /* Headings */
 h1, h2, h3 {
     color: #33A765;
-    margin-bottom: 10px;
+    margin: 0px;
 }
 
 .title {
     text-align: center;
-    align-items: center;
+    color: #33A765; /* Adjust as needed */
+    margin-bottom: 5px;
+    background-color: #f7ff6c;
 }
 
 /* Buttons */
@@ -137,7 +339,7 @@ h1, h2, h3 {
     background: #1D5E39;
 }
 .cta-button {
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     padding: 0.75rem 1.5rem;
     background-color: #2ecc71;
     color: white;
@@ -146,11 +348,168 @@ h1, h2, h3 {
     text-decoration: none;
     font-weight: bold;
     transition: background 0.3s ease;
-    margin-top: 0; /* If using flex gap, remove this or set to 0 */
+    display: inline-block;
 }
 
 .cta-button:hover {
     background-color: #27ae60;
+}
+
+/* Container for the About section */
+.about-section-polished {
+    background-color: #FDFD96; /* Your yellow background */
+    padding: 4rem 2rem; /* Generous padding around the whole section */
+    text-align: center; /* Center overall content */
+    color: #333; /* Default text color for this section */
+}
+
+.about-content-wrapper {
+    max-width: 900px; /* Constrain content width for readability */
+    margin: 0 auto; /* Center the content wrapper */
+}
+
+/* Heading for the section */
+.about-section-polished h2 {
+    color: #33A765; /* Your green heading color */
+    font-size: 3rem; /* Larger heading */
+    margin: 1rem; /* More space below heading */
+    line-height: 1.2;
+}
+
+/* Container for the key points (using Flexbox) */
+.about-key-points {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to next line on smaller screens */
+    justify-content: center; /* Center items when they wrap */
+    gap: 0rem; /* Gap between rows and columns of key points */
+    margin-bottom: 1rem; /* Space below the key points */
+}
+
+/* Individual key point item */
+.key-point-item {
+    display: flex;
+    flex-direction: column; /* Stack icon and text vertically */
+    align-items: center; /* Center icon and text horizontally */
+    text-align: center;
+}
+
+.about-icon {
+    width: 60px; /* Size of the icons */
+    height: 60px;
+    margin-bottom: 1rem; /* Space between icon and text */
+}
+
+.key-point-item p {
+    width: 100%;
+    font-size: 1.3rem; /* Larger text for key points */
+    line-height: 1.5;
+    margin-bottom: 0; /* Remove default paragraph margin if flex item */
+    color: #555; /* Slightly softer text color */
+}
+
+.key-point-item p strong {
+    color: #333; /* Make emphasized words stand out more */
+}
+
+/* NEW STYLES FOR CTA BUTTON WRAPPER */
+.cta-button-wrapper {
+    display: flex; /* Use flexbox to align icon and button */
+    justify-content: center; /* Center the icon and button horizontally */
+    align-items: center; /* Vertically align them */
+    margin-top: 1.5rem; /* Add some space above the button group */
+    margin-bottom: 2rem; /* Add space below the button group */
+}
+
+.cta-icon {
+    /* Adjust size if needed, but keep it consistent with other icons */
+    width: 30px; /* Make this icon slightly smaller than the main ones */
+    height: 30px;
+    margin-right: 10px; /* Space between icon and button */
+    margin-bottom: 0; /* Remove bottom margin if inheriting from .about-icon */
+}
+
+/* Re-use your existing cta-button styles */
+.cta-button-about {
+    display: inline-flex; /* Use inline-flex for button if it contains icon */
+    align-items: center; /* Align content inside the button if you put icon directly in it */
+    justify-content: center;
+    padding: 15px 30px; /* Adjust padding for button size */
+    background-color: #2ecc71; /* Your green button color */
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button-about:hover {
+    background-color: #1D5E39;
+}
+
+.small-luci {
+    width: 100px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%; /* Make it circular if it's a profile picture */
+    margin-top: 1rem; /* Space above the image */
+}
+
+/* Google Reviews Section */
+.google-reviews-section {
+    background-color: #f0f0f0; /* A light background, adjust to your theme */
+    min-height: 80vh; /* Takes up approximately 80% of viewport height */
+    display: flex; /* Use flexbox to center content vertically */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    padding: 4rem 2rem; /* Consistent padding around the section */
+    box-sizing: border-box; /* Ensures padding is included in min-height calculation */
+    color: #333; /* Default text color */
+}
+
+.reviews-content-wrapper {
+    max-width: 1000px; /* Adjust max-width as desired for line length */
+    width: 100%; /* Ensure it takes full available width within padding */
+    text-align: center;
+    margin: 0 auto; /* Centers the wrapper */
+}
+
+.google-reviews-section h2 {
+    color: #33A765; /* Consistent heading color */
+    font-size: 3rem; /* Large heading */
+    margin-bottom: 1.5rem;
+}
+
+.google-reviews-section .section-description {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2.5rem;
+    max-width: 800px; /* Constrain description width for readability */
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.google-reviews-widget-container {
+    background-color: #fff; /* White background for the widget area */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle shadow */
+    padding: 2rem; /* Padding inside the widget container */
+    margin-bottom: 2.5rem; /* Space below the widget */
+    /* Set a min-height for the widget container to ensure space,
+       especially if the widget loads asynchronously */
+    min-height: 300px; /* Adjust based on expected widget height */
+    display: flex; /* Helps center the "Loading..." text */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Important for some widgets */
+}
+
+/* Style for the 'Read All Reviews' button - re-using cta-button styles */
+.reviews-button {
+    /* Inherits general cta-button styles, add specific ones if needed */
+    font-size: 1.1rem; /* Slightly smaller than main CTA button if desired */
+    padding: 12px 25px;
 }
 
 /* Footer styling */
@@ -163,6 +522,14 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    #navbar {
+        display: flex;
+        justify-content: flex-end; /* Push the hamburger to the right */
+        align-items: center; /* Vertically center the hamburger */
+        padding: 10px 20px; /* Adjust padding for mobile */
+        min-height: 60px; /* Give it a minimum height to look balanced */
+        /* If you had a title inside #navbar, you might want to adjust justify-content to space-between */
+    }
     #navbar nav {
         display: flex;
         flex-direction: column;
@@ -170,23 +537,195 @@ footer {
         gap: 10px;
     }
     #navbar a {
+        padding: 15px 20px; /* More padding for easier tapping */
+        width: 100%; /* Make links take full width for better touch targets */
+        box-sizing: border-box; /* Include padding in width calculation */
+        text-align: center; /* Center text within links */
+    }
+
+    /* Adjust title sizing for mobile if needed */
+    /* Assuming the .title and its paragraph are now *outside* #navbar on mobile for clarity */
+    /* If you still want them inside #navbar, adjust as per previous step */
+    .title {
+        font-size: 1.5rem; /* Smaller title on mobile */
+        margin-bottom: 0; /* No margin below title when inline with toggle */
+    }
+    .title + p {
+        display: none; /* Hide subtitle on mobile for cleaner header */
+    }
+
+    /* Show the menu toggle button */
+    /* Adjust the hamburger toggle button styling */
+    .menu-toggle {
         display: block;
+        background: none;
+        border: none;
+        color: white; /* Color of the hamburger icon */
+        font-size: 2.5rem; /* Make the icon slightly larger */
+        cursor: pointer;
+        padding: 5px 10px; /* Add more padding around the icon for clickability */
+        /* Removed absolute positioning, let flexbox handle it for now if only hamburger is in #navbar */
+        position: relative; /* Keep relative if title is removed and you want it at end */
+        /* If you kept the absolute positioning earlier, it still works fine,
+           but ensure 'top' and 'right' values are relative to the new min-height.
+           For instance, with min-height: 60px, top: 50% should still work.
+           If you removed the title from header completely, `justify-content: flex-end` is simpler. */
+    }
+
+    /* Hide the navigation links by default on mobile */
+    #navbar nav.nav-links {
+        display: flex; /* Changed from 'none' to 'flex' for the transition to work with max-height properly */
+        flex-direction: column; /* Stack vertically when shown */
+        position: absolute; /* Position relative to #navbar */
+        top: 100%; /* Position below the #navbar (which is now just the top bar) */
+        left: 0;
         width: 100%;
-        text-align: center;
-        padding: 15px;
+        background: #2ecc71; /* Background for the expanded menu */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        z-index: 1000; /* Ensure it's above other page content */
+        max-height: 0; /* Start collapsed */
+        overflow: hidden; /* Hide overflow content */
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out; /* Smooth transition */
+        padding: 0; /* No padding when collapsed */
+    }
+
+    /* Style for when the navigation is active/expanded */
+    #navbar nav.nav-links.active {
+        max-height: 500px; /* INCREASE THIS VALUE SIGNIFICANTLY. It should be greater than the maximum possible height of your menu when expanded. */
+        padding: 10px 0; /* Add padding when expanded */
     }
 
     .hero-overlay {
-        padding: 1rem;
+        padding: 1.5rem;
+        gap: 1rem;
     }
     .hero-overlay h2 {
-        font-size: 3.5rem;
+        font-size: 2rem;
     }
     .hero-overlay p {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
     
-      .cta-button {
+    .cta-button {
         width: 100%;
+    }
+
+    .how-it-works-grid-container {
+        /* On smaller screens, stack the sections vertically */
+        grid-template-columns: 1fr; /* Single column */
+        grid-template-rows: auto auto auto auto; /* Rows will take height of content */
+        grid-template-areas:
+            "blue-area"
+            "yellow-area"
+            "green-area"
+            "purple-area";
+        min-height: auto; /* Allow height to adjust to content */
+    }
+    .how-it-works-grid-container .blue-section,
+    .how-it-works-grid-container .yellow-section,
+    .how-it-works-grid-container .green-section,
+    .how-it-works-grid-container .purple-section {
+        grid-column: unset;
+        grid-row: unset;
+    }
+
+    .grid-area {
+        padding: 1.5rem; /* Slightly less padding on smaller screens */
+    }
+
+    .green-section h2 {
+        font-size: 1.8rem;
+    }
+    .green-section p {
+        font-size: 1rem;
+    }
+
+    .about-grid-section {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        grid-template-rows: auto auto auto auto; /* Stack naturally */
+        grid-template-areas:
+            "purple-area" /* Define desired stacking order for mobile */
+            "green-area"
+            "yellow-area"
+            "blue-area";
+        min-height: auto;
+    }
+    /* Reset grid placement for mobile for the new section's children */
+    .about-grid-section .purple-section {
+        display: none;;
+    }
+    .about-grid-section .green-section,
+    .about-grid-section .yellow-section,
+    .about-grid-section .blue-section {
+        grid-column: unset;
+        grid-row: unset;
+    }
+
+    .about-section-polished {
+        padding: 3rem 1.5rem; /* Less padding on mobile */
+    }
+
+    .about-section-polished h2 {
+        font-size: 2.2rem; /* Smaller heading on mobile */
+        margin-bottom: 1.5rem;
+    }
+
+    .about-key-points {
+        gap: 1.5rem; /* Smaller gap on mobile */
+    }
+
+    .key-point-item {
+        max-width: 100%; /* Allow items to take full width on mobile */
+    }
+
+    .about-icon {
+        width: 45px;
+        height: 45px;
+        margin-bottom: 0.8rem;
+    }
+
+    .key-point-item p {
+        font-size: 1rem; /* Smaller key point text on mobile */
+    }
+
+    .cta-icon { /* Adjust CTA icon size for mobile */
+        width: 25px;
+        height: 25px;
+    }
+
+    .cta-button-about {
+        font-size: 1rem; /* Adjust button font size for mobile */
+        padding: 12px 25px;
+    }
+
+    .google-reviews-section {
+        min-height: auto; /* Allow height to adjust to content on mobile */
+        padding: 3rem 1rem; /* Adjust padding for mobile */
+    }
+
+    .google-reviews-section h2 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .google-reviews-section .section-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .google-reviews-widget-container {
+        padding: 1rem;
+        min-height: 200px; /* Smaller min-height for mobile */
+    }
+
+    .reviews-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-area {
+        padding: 1rem;
     }
 }
